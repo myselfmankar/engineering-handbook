@@ -1,0 +1,168 @@
+/* ─── Hero ───────────────────────────────────────────────────────────────────── */
+.hero {
+  min-height: calc(100vh - var(--ifm-navbar-height) - 1px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background: var(--ifm-background-color);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle dot grid background */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--ifm-color-emphasis-300) 1px, transparent 0);
+  background-size: 40px 40px;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.heroInner {
+  max-width: 800px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ifm-color-content-secondary);
+  margin-bottom: 2rem;
+  letter-spacing: 0.02em;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  color: var(--ifm-color-content);
+  letter-spacing: -0.04em;
+}
+
+.heroTitleAccent {
+  color: var(--ifm-color-content-secondary);
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  color: var(--ifm-color-content-secondary);
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 0 auto 3rem;
+  letter-spacing: -0.01em;
+}
+
+.authorLink {
+  color: var(--ifm-color-content);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  font-weight: 600;
+}
+
+.authorLink:hover {
+  color: var(--ifm-color-primary);
+}
+
+/* ─── CTA Buttons ─────────────────────────────────────────────────────────────── */
+.heroCTA {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  background: var(--ifm-color-primary);
+  color: var(--ifm-background-color) !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: var(--ifm-global-radius);
+  text-decoration: none !important;
+  transition: opacity 0.2s ease;
+}
+
+.ctaPrimary:hover {
+  opacity: 0.9;
+}
+
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  color: var(--ifm-color-content) !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: var(--ifm-global-radius);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  text-decoration: none !important;
+  transition: background 0.2s ease;
+}
+
+.ctaSecondary:hover {
+  background: var(--ifm-background-surface-color);
+}
+
+/* ─── Topics Grid ────────────────────────────────────────────────────────────── */
+.topics {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 2.5rem 8rem;
+}
+
+.topicsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+/* ─── Card ───────────────────────────────────────────────────────────────────── */
+.card {
+  display: block;
+  padding: 2rem;
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  text-decoration: none !important;
+  transition: border-color 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--ifm-color-content);
+  text-decoration: none !important;
+}
+
+.cardEmoji {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.cardTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ifm-color-content);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.cardDesc {
+  font-size: 0.95rem;
+  color: var(--ifm-color-content-secondary);
+  line-height: 1.6;
+  margin: 0;
+}

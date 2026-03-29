@@ -1,0 +1,8 @@
+{
+  "label": "System Design",
+  "position": 1,
+  "customProps": {
+    "emoji": "🏗️",
+    "description": "Architecture case studies, scalability, and distributed systems foundations."
+  }
+}
