@@ -12,7 +12,7 @@ const config: Config = {
   },
 
   url: 'https://myselfmankar.github.io',
-  baseUrl: '/',
+  baseUrl: '/engineering-handbook/',
 
   organizationName: 'myselfmankar',
   projectName: 'engineering-handbook',
