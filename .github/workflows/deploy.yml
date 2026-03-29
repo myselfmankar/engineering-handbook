@@ -42,7 +42,7 @@ jobs:
         run: npm install
 
       - name: Run Documizer Scanner
-        run: node scripts/sync-docs.js
+        run: npx tsx scripts/sync-docs.ts
 
       - name: Build website
         run: npm run build

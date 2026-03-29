@@ -1,37 +1,53 @@
-const fs = require('fs');
-const path = require('path');
+import * as fs from 'fs';
+import * as path from 'path';
 
 /**
- *  Documizer Folder Scanner
+ * 🛠️ Documizer Folder Scanner (TypeScript Edition)
  * 
  * This script scans the /docs directory to build a dynamic categories.json
- * file for the homepage. It ensures your site is truly dynamic based only
- * on the filesystem structure.
+ * file for the homepage. Unifying the project to 100% TypeScript.
  */
+
+interface CategoryConfig {
+  label?: string;
+  position?: number;
+  customProps?: {
+    emoji?: string;
+    description?: string;
+  };
+}
+
+interface CategoryItem {
+  id: string;
+  title: string;
+  emoji: string;
+  desc: string;
+  position: number;
+  href: string;
+}
 
 const docsDir = path.join(__dirname, '..', 'docs');
 const outputDir = path.join(__dirname, '..', 'src', 'data');
 const outputFile = path.join(outputDir, 'categories.json');
 
-// Folders to ignore
 const IGNORE_FOLDERS = ['handbook'];
 
-function sync() {
-  console.log('  Scanning /docs for dynamic categories...');
+function sync(): void {
+  console.log('🏗️  Scanning /docs for dynamic categories (TS mode)...');
 
   if (!fs.existsSync(docsDir)) {
-    console.warn(' Docs directory missing.');
+    console.warn('❌ Docs directory missing.');
     return;
   }
 
-  const items = fs.readdirSync(docsDir)
+  const items: CategoryItem[] = fs.readdirSync(docsDir)
     .filter(item => {
       const fullPath = path.join(docsDir, item);
       return fs.lstatSync(fullPath).isDirectory() && !IGNORE_FOLDERS.includes(item);
     })
     .map(folder => {
       const configPath = path.join(docsDir, folder, '_category_.json');
-      let config = {};
+      let config: CategoryConfig = {};
 
       if (fs.existsSync(configPath)) {
         try {
@@ -41,11 +57,13 @@ function sync() {
         }
       }
 
-      // Format folder name to Title Case if label is missing
       const defaultLabel = folder
         .split('-')
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ');
+
+      const firstDoc = fs.readdirSync(path.join(docsDir, folder))
+        .find(file => file.endsWith('.md') || file.endsWith('.mdx'));
 
       return {
         id: folder,
@@ -53,7 +71,7 @@ function sync() {
         emoji: config.customProps?.emoji || '📁',
         desc: config.customProps?.description || 'Exploring engineering insights in this category.',
         position: config.position || 99,
-        href: `/docs/${folder}/${fs.readdirSync(path.join(docsDir, folder))[0].replace('.md', '')}`
+        href: `/docs/${folder}/${firstDoc ? firstDoc.replace(/\.mdx?$/, '') : ''}`
       };
     })
     .sort((a, b) => a.position - b.position);
@@ -63,7 +81,7 @@ function sync() {
   }
 
   fs.writeFileSync(outputFile, JSON.stringify(items, null, 2));
-  // console.log(`✅ Dynamically generated ${items.length} categories in src/data/categories.json`);
+  console.log(`✅ Dynamically generated ${items.length} categories in src/data/categories.json`);
 }
 
 sync();
