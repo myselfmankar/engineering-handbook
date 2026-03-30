@@ -1,4 +1,4 @@
-# The Engineering Handbook
+# Engineering Handbook for Placement & Interview Preparation
 
 [![Deploy to GitHub Pages](https://github.com/myselfmankar/engineering-handbook/actions/workflows/deploy.yml/badge.svg)](https://github.com/myselfmankar/engineering-handbook/actions/workflows/deploy.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](https://opensource.org/licenses/MIT)
