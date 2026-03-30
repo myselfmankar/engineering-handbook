@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /search/
+
+# Sitemaps
+Sitemap: https://myselfmankar.github.io/engineering-handbook/sitemap.xml

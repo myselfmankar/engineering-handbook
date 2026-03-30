@@ -55,6 +55,13 @@ const config: Config = {
           showLastUpdateAuthor: true,
         },
         blog: false,
+        sitemap: {
+          lastmod: 'date',
+          changefreq: 'weekly',
+          priority: 0.5,
+          ignorePatterns: ['/tags/**'],
+          filename: 'sitemap.xml',
+        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -63,6 +70,11 @@ const config: Config = {
   ],
 
   themeConfig: {
+    metadata: [
+      { name: 'keywords', content: 'system design, distributed systems, software engineering, technical interview, vault, handbook, dsa, dbms, git, oop, interview, pict, cs' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'author', content: 'Vaishnav Mankar' },
+    ],
     image: 'img/social-card.png',
     colorMode: {
       defaultMode: 'dark',
